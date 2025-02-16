@@ -25,11 +25,7 @@ mydb = c.connect(
 #     return myresult
 
 def execute(query, params=None, fetch=True):
-    # connection = mydb
     cursor = mydb.cursor(dictionary=True)
     cursor.execute(query, params or ())
-    result = cursor.fetchall() if fetch else None
-    mydb.commit()
-    cursor.close()
-    mydb.close()
+    result = cursor.fetchall() if fetch else None 
     return result

@@ -3,11 +3,7 @@
 
 <h1>AHOOJ!</h1>
 
-<ul>
-    {% for item in todos %}
-    <li>{{ item }}</li>
-    {% endfor %}
-</ul>
+
 
 <div class="container py-5">
     <h1>Učebny</h1>
@@ -19,7 +15,7 @@
                 <th>Important</th>
                 <th>Checked</th>
                 <th></th>
-                <th></th>
+                
             </tr>
         </thead>
         <tbody>
@@ -29,12 +25,16 @@
                 <td> {{item.id}} </td>
                 <td> {{item.todo_work}} </td>
                 <td>{{item.important}}</td>
-                <td>{{item.is_check}}</td>
                 <td>
-                    <a class="btn btn-warning btn-sm" href="">Upravit</a>
+                    {% if item.is_check != "True" %}
+                    <i class="bi bi-check-circle-fill text-danger"></i>
+                    {% else %}
+                    <i class="bi bi-check-circle-fill text-success"></i>
+                    {% endif %}
                 </td>
-                <td>
-                    <a class="btn btn-danger btn-sm">Smazat</a>
+                <td class="text-end">
+                    <a class="btn btn-outline-warning btn-sm me-2" href="">Upravit</a>
+                    <a class="btn btn-outline-danger btn-sm" href="">Smazat</a>
                 </td>
             </tr>
             {% endfor %}
