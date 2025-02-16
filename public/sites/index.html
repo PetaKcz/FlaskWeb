@@ -26,10 +26,10 @@
 
             {% for item in todos %}
             <tr>
-                <td> {{item[0]}} </td>
-                <td> {{item[1]}} </td>
-                <td>{{item[2]}}</td>
-                <td>{{item[3]}}</td>
+                <td> {{item.id}} </td>
+                <td> {{item.todo_work}} </td>
+                <td>{{item.important}}</td>
+                <td>{{item.is_check}}</td>
                 <td>
                     <a class="btn btn-warning btn-sm" href="">Upravit</a>
                 </td>

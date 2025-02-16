@@ -18,8 +18,18 @@ mydb = c.connect(
 
 
 
-def execute(query):
-    mycursor = mydb.cursor()
-    mycursor.execute(query)
-    myresult = mycursor.fetchall()
-    return myresult
+# def execute(query):
+#     mycursor = mydb.cursor()
+#     mycursor.execute(query)
+#     myresult = mycursor.fetchall()
+#     return myresult
+
+def execute(query, params=None, fetch=True):
+    # connection = mydb
+    cursor = mydb.cursor(dictionary=True)
+    cursor.execute(query, params or ())
+    result = cursor.fetchall() if fetch else None
+    mydb.commit()
+    cursor.close()
+    mydb.close()
+    return result
