@@ -1,11 +1,47 @@
 {% include 'head.html' %}
 {% include 'menu.html' %}
 
-    <h1>AHOOJ!</h1>
+<h1>AHOOJ!</h1>
 
-    <ul>
-        {% for item in todos %}
-            <li>{{ item }}</li>
-        {% endfor %}
-    </ul>
+<ul>
+    {% for item in todos %}
+    <li>{{ item }}</li>
+    {% endfor %}
+</ul>
+
+<div class="container py-5">
+    <h1>Učebny</h1>
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nazev</th>
+                <th>Important</th>
+                <th>Checked</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for item in todos %}
+            <tr>
+                <td> {{item[0]}} </td>
+                <td> {{item[1]}} </td>
+                <td>{{item[2]}}</td>
+                <td>{{item[3]}}</td>
+                <td>
+                    <a class="btn btn-warning btn-sm" href="">Upravit</a>
+                </td>
+                <td>
+                    <a class="btn btn-danger btn-sm">Smazat</a>
+                </td>
+            </tr>
+            {% endfor %}
+
+
+        </tbody>
+    </table>
+</div>
+
 {% include 'footer.html' %}
