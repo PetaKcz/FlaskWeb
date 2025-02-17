@@ -31,3 +31,8 @@ class Todo:
         query = "INSERT INTO todo (todo_work, important, is_check) VALUES (%s, %s, %s);"
         values = (self.todo_work, self.important, self.is_check)
         return database.execute(query, values, fetch=False)
+
+    def delete(self):
+        query = "DELETE FROM todo WHERE id = (%s);"
+        values = (self.id,)
+        return database.execute(query, values, fetch=False)

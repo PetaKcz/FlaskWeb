@@ -16,15 +16,23 @@ app.jinja_loader = ChoiceLoader([
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
+    action = request.form.get('action')
+
     if request.method == 'POST':
-        name = request.form.get('name')
-        important = request.form.get('important')
-        is_check = request.form.get('is_check')
-        if is_check == 'on':
-            is_check = "True"
-        else:
-            is_check = "False"
-        todo.Todo(todo_work = name, important = important, is_check = is_check).create()
+
+        if action == 'delete':
+            item_id = request.form.get('delete_id')
+            todo.Todo(id = item_id).delete()
+
+        elif action == 'create':    
+            name = request.form.get('name')
+            important = request.form.get('important')
+            is_check = request.form.get('is_check')
+            if is_check == 'on':
+                is_check = "True"
+            else:
+                is_check = "False"
+            todo.Todo(todo_work = name, important = important, is_check = is_check).create()
 
     all_todos = todo.Todo.get_all()  # Zavoláme metodu přímo
     #print(todo.Todo.get_all())
