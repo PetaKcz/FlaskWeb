@@ -1,20 +1,16 @@
 {% include 'head.html' %}
 {% include 'menu.html' %}
 
-<h1>AHOOJ!</h1>
 
 
 <script src="/public/js/test.js"></script>
 <div class="container py-5">
-    <!-- Tlačítko pro otevření modálního okna -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Otevřít formulář
-    </button>
-    <button type="button" class="btn btn-secondary" onclick="window.location.reload();">
-        Obnovit stránku
-    </button>
+    <h1>To-Do</h1>
+    <div class="ribbon">
+        <button class="ribbon-add" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-plus-circle"></i>Přidat</button>
+    </div>
 
-    <h1>Učebny</h1>
+
     <table class="table table-striped table-hover">
         <thead>
             <tr>
@@ -24,15 +20,15 @@
                 </th>
                 <th>
                     <i class="bi bi-arrow-down-up"></i>
-                    Nazev
+                    Název
                 </th>
                 <th>
                     <i class="bi bi-arrow-down-up"></i>
-                    Important
+                    Důležitost
                 </th>
                 <th>
                     <i class="bi bi-arrow-down-up"></i>
-                    Checked
+                    Hotovo?
                 </th>
                 <th></th>
                 
@@ -88,18 +84,18 @@
           <form method="POST" id="insertForm">
             <input type="hidden" name="action" value="create">
             <div class="mb-3">
-              <label for="name" class="form-label">Jméno</label>
+              <label for="name" class="form-label">Jméno To-Do</label>
               <input type="text" class="form-control" name="name" required>
             </div>
             <div class="mb-3">
-              <label for="important" class="form-label">important</label>
+              <label for="important" class="form-label">Důležitost</label>
               <input type="number" class="form-control" name="important" required min="0" max="10">
             </div>
             <div class="mb-3">
-                <label for="is_check" class="form-label">is_check</label>
+                <label for="is_check" class="form-label">Hotovo?</label>
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked name="is_check">
-                    <label class="form-check-label" for="flexSwitchCheckChecked" name="is_check">Checked switch checkbox input</label>
+                    <label class="form-check-label" for="flexSwitchCheckChecked" name="is_check"></label>
                 </div>
             </div>
             <button type="submit" class="btn btn-primary">Odeslat</button>
@@ -110,4 +106,4 @@
   </div>
   
   
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+ 

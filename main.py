@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 from jinja2 import ChoiceLoader, FileSystemLoader
 
 
@@ -33,7 +33,7 @@ def home():
             else:
                 is_check = "False"
             todo.Todo(todo_work = name, important = important, is_check = is_check).create()
-
+        return redirect(url_for('home'))
     all_todos = todo.Todo.get_all()  # Zavoláme metodu přímo
     #print(todo.Todo.get_all())
     return render_template("index.html", todos=all_todos)

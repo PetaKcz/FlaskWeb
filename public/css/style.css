@@ -3,3 +3,64 @@ h1 {
     
     
 }
+:root{
+    --ts-primary: #1f88d9;
+    --ts-danger: #DC3545;
+    --ts-success: #28A745;
+    --ts-warning: #FFC107;
+    --ts-hover-dark: #323539;
+    --ts-border-dark: #495057;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+#footer {
+    margin-top: auto;
+}
+
+.ts-table th:hover {
+    cursor: pointer;
+}
+
+.ts-table th:hover i, th.ts-active-column i {
+    color: var(--ts-primary);
+}
+
+.ts-table td:hover {
+    cursor: pointer;
+}
+
+.ribbon {
+    display: flex;
+    margin: 30px 0;
+    border-top: 1px solid var(--ts-border-dark);
+}
+
+.ribbon button {
+    padding: 10px;
+    cursor: pointer;
+    border: 0;
+    background: none;
+}
+
+.ribbon i {
+    color: var(--ts-primary);
+    margin-right: 5px
+}
+
+.ribbon button:hover {
+    background-color: var(--ts-hover-dark);
+}
+
+.form-control {
+    margin-bottom: 10px;
+    
+}
