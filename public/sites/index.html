@@ -6,6 +6,14 @@
 
 <script src="/public/js/test.js"></script>
 <div class="container py-5">
+    <!-- Tlačítko pro otevření modálního okna -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Otevřít formulář
+    </button>
+    <button type="button" class="btn btn-secondary" onclick="window.location.reload();">
+        Obnovit stránku
+    </button>
+
     <h1>Učebny</h1>
     <table class="table table-striped table-hover">
         <thead>
@@ -57,3 +65,42 @@
 </div>
 
 {% include 'footer.html' %}
+
+
+
+
+<!-- Modální okno -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Formulář pro vložení dat</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Formulář -->
+          <form method="POST" id="insertForm">
+            <div class="mb-3">
+              <label for="name" class="form-label">Jméno</label>
+              <input type="text" class="form-control" name="name" required>
+            </div>
+            <div class="mb-3">
+              <label for="important" class="form-label">important</label>
+              <input type="number" class="form-control" name="important" required min="0" max="10">
+            </div>
+            <div class="mb-3">
+                <label for="is_check" class="form-label">is_check</label>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked name="is_check">
+                    <label class="form-check-label" for="flexSwitchCheckChecked" name="is_check">Checked switch checkbox input</label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Odeslat</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

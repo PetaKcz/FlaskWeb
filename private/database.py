@@ -27,5 +27,7 @@ mydb = c.connect(
 def execute(query, params=None, fetch=True):
     cursor = mydb.cursor(dictionary=True)
     cursor.execute(query, params or ())
+    if not fetch:  # Pokud nezískáváme data, ujistíme se, že commitujeme změny.
+        mydb.commit()
     result = cursor.fetchall() if fetch else None 
     return result
