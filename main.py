@@ -33,6 +33,15 @@ def home():
             else:
                 is_check = "False"
             todo.Todo(todo_work = name, important = important, is_check = is_check).create()
+
+        elif action == 'update':
+            update_id = request.form.get('update_id')
+            name = request.form.get('name')
+            important = request.form.get('important')
+            is_check = 'True' if request.form.get('is_check') == 'on' else 'False'
+            todo.Todo(id=update_id, todo_work=name, important=important, is_check=is_check).update()
+        
+
         return redirect(url_for('home'))
     all_todos = todo.Todo.get_all()  # Zavoláme metodu přímo
     #print(todo.Todo.get_all())

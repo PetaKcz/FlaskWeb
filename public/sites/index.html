@@ -49,7 +49,7 @@
                     {% endif %}
                 </td>
                 <td class="text-end">
-                    <a class="btn btn-outline-warning btn-sm me-2" href="">Upravit</a>
+                    <a class="btn btn-outline-warning btn-sm me-2" data-bs-toggle="modal" data-bs-target="#editModal{{ item.id }}">Upravit</a>
                     <!-- <a class="btn btn-outline-danger btn-sm" data-id="{{ item.id }}" href="">Smazat</a> -->
                      <!-- Formulář pro smazání položky -->
                     <form method="POST" style="display:inline;">
@@ -59,6 +59,39 @@
                     </form>
                 </td>
             </tr>
+            <!-- Modální okno pro úpravu -->
+            <div class="modal fade" id="editModal{{ item.id }}" tabindex="-1" aria-labelledby="editModalLabel{{ item.id }}" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="editModalLabel{{ item.id }}">Upravit To-Do</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form method="POST">
+                                <input type="hidden" name="action" value="update">
+                                <input type="hidden" name="update_id" value="{{ item.id }}">
+
+                                <div class="mb-3">
+                                    <label class="form-label">Jméno To-Do</label>
+                                    <input type="text" class="form-control" name="name" value="{{ item.todo_work }}" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Důležitost</label>
+                                    <input type="number" class="form-control" name="important" value="{{ item.important }}" required min="0" max="10">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Hotovo?</label>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" name="is_check" {% if item.is_check == 'True' %}checked{% endif %}>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Uložit změny</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
             {% endfor %}
 
 

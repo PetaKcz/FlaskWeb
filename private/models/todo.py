@@ -6,20 +6,6 @@ class Todo:
         self.important = important
         self.is_check = is_check
 
-    
-
-    def update(self):
-        pass
-
-    def delete(self):
-        pass
-
-    # def get_all():
-    #     query = "SELECT * FROM todo"
-    #     returns = database.execute(query)
-    #     print(returns)
-    #     new_todo = Todo(returns[0][0], returns[0][1], returns[0][2], returns[0][3])
-    #     return returns
     @staticmethod
     def get_all():
         query = "SELECT * FROM todo"
@@ -35,4 +21,9 @@ class Todo:
     def delete(self):
         query = "DELETE FROM todo WHERE id = (%s);"
         values = (self.id,)
+        return database.execute(query, values, fetch=False)
+
+    def update(self):
+        query = "UPDATE todo SET todo_work = %s, important = %s, is_check = %s WHERE id = %s"
+        values = (self.todo_work, self.important, self.is_check, self.id)
         return database.execute(query, values, fetch=False)
