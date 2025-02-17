@@ -14,8 +14,8 @@ app.jinja_loader = ChoiceLoader([
     FileSystemLoader('private/models')
 ])
 
-@app.route('/', methods=['GET', 'POST'])
-def home():
+@app.route('/todo.html', methods=['GET', 'POST'])
+def to_do():
     action = request.form.get('action')
 
     if request.method == 'POST':
@@ -42,11 +42,15 @@ def home():
             todo.Todo(id=update_id, todo_work=name, important=important, is_check=is_check).update()
         
 
-        return redirect(url_for('home'))
+        return redirect(url_for('to_do'))
     all_todos = todo.Todo.get_all()  # Zavoláme metodu přímo
     #print(todo.Todo.get_all())
-    return render_template("index.html", todos=all_todos)
+    return render_template("todo.html", todos=all_todos)
     #return render_template('index.html')
+
+@app.route('/', methods=['GET', 'POST'])
+def home():
+    return render_template("index.html")
 
 if __name__ == '__main__':
     app.run(debug=True)
